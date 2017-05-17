@@ -165,7 +165,7 @@ void CAnalyseGenomeClientDlg::OnBnClickedButton1()
 {
 	
 	clientsocket.Create();
-	clientsocket.Connect("127.0.0.1",8080);
+	clientsocket.Connect(CString("127.0.0.1"),8080);
 	// TODO: 在此添加控件通知处理程序代码
 }
 
