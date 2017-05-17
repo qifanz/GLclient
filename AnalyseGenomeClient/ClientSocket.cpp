@@ -35,8 +35,6 @@ void ClientSocket::OnReceive(int nErrorCode)
 	const int BUFF_LEN = 2048;
 	char szBuff[BUFF_LEN];
 
-
-
 	int nReceivedSize = Receive(szBuff, BUFF_LEN);
 
 	if (nReceivedSize <= 0)
@@ -44,8 +42,6 @@ void ClientSocket::OnReceive(int nErrorCode)
 
 	szBuff[nReceivedSize - 1] = '\0';
 	TRACE(szBuff);
-	
-	
 
 	CAsyncSocket::OnReceive(nErrorCode);
 }
