@@ -28,6 +28,7 @@ list<Analyse> InterfaceHM::consulterListAnalyse() {
 }
 /*
 InterfaceHM::consulterListAnalyse(list<Analyse> ) {
+<<<<<<< HEAD
 list<Analyse>::const_iterator iterator;
 lit(listanalyse.begin()),
 lend(listanalyse.end());
@@ -48,6 +49,38 @@ void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
 
 map<list<string>, string>  listerMaladies() {
 	parser.prepareMsgListeMaladies();
+=======
+	list<Analyse>::const_iterator iterator;
+	lit(listanalyse.begin()),
+	lend(listanalyse.end());
+	for (; lit != lend; ++lit) {
+	lit.afficher();
+	}
+}
+*/
+void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
+	interfaceClient.prepareMsgAnalyse(analyse);
+}
+
+void InterfaceHM ::demanderAnalyseCiblee(Analyse analyse, string maladie){
+	interfaceClient.prepareMsgAnalyse(analyse,maladie);
+}
+
+map<list<string>, string>  listerMaladies() {
+	/*map<list<string>, string>::iterator lM;
+	for (lM = map.begin(); p != map.end(); lM++)
+	{
+		list<string> l = lM->first;
+		list<string>::const_iterator
+		lit(l.begin()),
+		lend(l.end());
+		for (; lit != lend; ++lit) {
+			cout << *lit << endl;
+		}
+	cout << p->second < endl;
+	}*/
+
+>>>>>>> origin/master
 
 
 }

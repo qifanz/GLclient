@@ -1,8 +1,15 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 #include <string>
 #include "Analyse.h"
 #include <map>
 #include <list>
+<<<<<<< HEAD
 #include "UtilParser.h"
+=======
+>>>>>>> origin/master
 using namespace std;
 
 class InterfaceHM
@@ -11,7 +18,10 @@ public:
 	InterfaceHM();
 	~InterfaceHM();
 public:
+<<<<<<< HEAD
 	ClientSocket clientSocket;
+=======
+>>>>>>> origin/master
 
 	list<Analyse> consulterListAnalyse();
 
@@ -39,6 +49,13 @@ protected:
 
 	string version;
 
+<<<<<<< HEAD
 	
 
 };
+=======
+	InterfaceClient interfaceClient;
+
+}
+
+>>>>>>> origin/master
