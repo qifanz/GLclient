@@ -18,10 +18,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MFCApplication1.h">
+    <ClInclude Include="AnalyseGenomeClient.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MFCApplication1Dlg.h">
+    <ClInclude Include="AnalyseGenomeClientDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
@@ -33,30 +33,36 @@
     <ClInclude Include="Resource.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ClientSocket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MFCApplication1.cpp">
+    <ClCompile Include="AnalyseGenomeClient.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="MFCApplication1Dlg.cpp">
+    <ClCompile Include="AnalyseGenomeClientDlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ClientSocket.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="MFCApplication1.rc">
+    <ResourceCompile Include="AnalyseGenomeClient.rc">
       <Filter>资源文件</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\MFCApplication1.rc2">
+    <None Include="res\AnalyseGenomeClient.rc2">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\MFCApplication1.ico">
+    <Image Include="res\AnalyseGenomeClient.ico">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>
