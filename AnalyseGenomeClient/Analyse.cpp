@@ -9,6 +9,10 @@ Analyse::Analyse(Genome genome, string type, string version) : genome(genome), t
 {
 }
 
+Analyse::Analyse()
+{
+}
+
 
 Analyse::~Analyse()
 {

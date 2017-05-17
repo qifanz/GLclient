@@ -25,6 +25,10 @@ Genome::Genome(string nomFichierGenome)
 	}
 }
 
+Genome::Genome()
+{
+}
+
 
 Genome::~Genome()
 {

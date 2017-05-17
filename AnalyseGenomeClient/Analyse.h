@@ -7,6 +7,7 @@ class Analyse
 {
 public:
 	Analyse(Genome genome, string type, string version);
+	Analyse();
 	~Analyse();
 
 public:
