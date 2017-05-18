@@ -15,18 +15,37 @@ UtilParser::~UtilParser()
 
 
 
-CString UtilParser::traiteMsgRecu(char * msg)
+char* UtilParser::traiteMsgRecu(char * msg)
 {
 	TRACE(msg);
+	return (("test"));
 }
 
-CString UtilParser::prepareMsgAnalyse(Analyse a)
+const char* UtilParser::prepareMsgAnalyse(Analyse a)
 {
+	TRACE("preparing \r\n");
+	string msgToSend;
+	msgToSend += "MA v1.0/r/n";
+	msgToSend += "CHECK DISEASE\r\n";
+	msgToSend += a.getType();
+	msgToSend += "\r\n";
+
+
+
+	Genome genome = a.getGenome();
+	for (auto it : genome.mots)
+	{
+		msgToSend += it;
+		msgToSend += "\r\n";
+		TRACE(it.c_str());
+	}
 	
+	return (msgToSend.c_str());
 }
 
-CString UtilParser::prepareMsgListeMaladies()
+const char* UtilParser::prepareMsgListeMaladies()
 {
+	return ( ("prepareMsgListeMaladies"));
 }
 
 list<CString> UtilParser::returnListeMaladies()

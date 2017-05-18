@@ -1,15 +1,11 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
+
 #include <string>
 #include "Analyse.h"
 #include <map>
 #include <list>
-<<<<<<< HEAD
 #include "UtilParser.h"
-=======
->>>>>>> origin/master
+#include "ClientSocket.h"
 using namespace std;
 
 class InterfaceHM
@@ -18,18 +14,13 @@ public:
 	InterfaceHM();
 	~InterfaceHM();
 public:
-<<<<<<< HEAD
-	ClientSocket clientSocket;
-=======
->>>>>>> origin/master
 
-	list<Analyse> consulterListAnalyse();
-
-	void consulterResultatAnalyse(Analyse analyse);
-
+	void startConnection();
+		
 	void demanderAnalyseGenerale(Analyse analyse);
 
 	void demanderAnalyseCiblee(Analyse analyse, string maladie);
+
 
 	map<list<string>, string>  listerMaladies();
 
@@ -49,13 +40,6 @@ protected:
 
 	string version;
 
-<<<<<<< HEAD
-	
+	ClientSocket clientSocket;
 
 };
-=======
-	InterfaceClient interfaceClient;
-
-}
-
->>>>>>> origin/master

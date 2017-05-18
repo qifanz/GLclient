@@ -3,7 +3,9 @@
 #include <iostream>
 using namespace std;
 
+Analyse::Analyse() {
 
+}
 
 Analyse::Analyse(Genome genome, string type, string version) : genome(genome), type(type), version(version)
 {
@@ -48,4 +50,13 @@ void Analyse::afficher()
 Genome Analyse::getGenome()
 {
 	return genome;
+}
+
+map<string, bool> Analyse::getResults() {
+
+	return resultats;
+}
+
+string Analyse ::getType() {
+	return type;
 }

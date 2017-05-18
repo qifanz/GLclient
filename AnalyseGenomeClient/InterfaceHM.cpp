@@ -14,29 +14,14 @@ InterfaceHM::InterfaceHM()
 InterfaceHM::~InterfaceHM()
 {
 }
-void InterfaceHM::consulterResultatAnalyse(Analyse analyse) {
-	analyse.afficher();
-}
-list<Analyse> InterfaceHM::consulterListAnalyse() {
-	/*list<Analyse>::iterator listanalyse;
-	lit(listanalyse.begin()),
-	lend(listanalyse.end());
-	for (; lit != lend; ++lit) {
-	lit.afficher();
-	}*/
 
+
+void InterfaceHM::startConnection()
+{
+	clientSocket.Create();
+	clientSocket.Connect(CString("127.0.0.1"), 8080);
 }
-/*
-InterfaceHM::consulterListAnalyse(list<Analyse> ) {
-<<<<<<< HEAD
-list<Analyse>::const_iterator iterator;
-lit(listanalyse.begin()),
-lend(listanalyse.end());
-for (; lit != lend; ++lit) {
-lit.afficher();
-}
-}
-*/
+
 void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
 	UtilParser parser;
 	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
@@ -44,43 +29,20 @@ void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
 
 void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
 	UtilParser parser;
-	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse, maladie));
+	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
 }
 
-map<list<string>, string>  listerMaladies() {
-	parser.prepareMsgListeMaladies();
-=======
-	list<Analyse>::const_iterator iterator;
-	lit(listanalyse.begin()),
-	lend(listanalyse.end());
-	for (; lit != lend; ++lit) {
-	lit.afficher();
-	}
-}
-*/
-void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
-	interfaceClient.prepareMsgAnalyse(analyse);
-}
-
-void InterfaceHM ::demanderAnalyseCiblee(Analyse analyse, string maladie){
-	interfaceClient.prepareMsgAnalyse(analyse,maladie);
-}
-
-map<list<string>, string>  listerMaladies() {
-	/*map<list<string>, string>::iterator lM;
-	for (lM = map.begin(); p != map.end(); lM++)
-	{
-		list<string> l = lM->first;
-		list<string>::const_iterator
-		lit(l.begin()),
-		lend(l.end());
-		for (; lit != lend; ++lit) {
-			cout << *lit << endl;
-		}
-	cout << p->second < endl;
-	}*/
-
->>>>>>> origin/master
 
 
-}
+
+/**
+map<list<string>, string> InterfaceHM::listerMaladies() {
+	UtilParser parser;
+	clientSocket.sendMsg(parser.prepareMsgListeMaladies());
+	return NULL;
+}**/
+
+
+
+
+

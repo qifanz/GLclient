@@ -6,6 +6,7 @@ using namespace std;
 class Analyse
 {
 public:
+	Analyse();
 	Analyse(Genome genome, string type, string version);
 	Analyse();
 	~Analyse();
@@ -14,8 +15,10 @@ public:
 	void addResult(string maladie, bool resultat);
 	void afficher();
 	Genome getGenome();
+	map<string, bool> getResults();
+	string getType();
 
-public:
+private:
 	string type;
 	string version;
 	map<string, bool> resultats;

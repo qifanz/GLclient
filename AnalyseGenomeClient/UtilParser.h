@@ -9,9 +9,9 @@ public:
 	UtilParser();
 	~UtilParser();
 	
-	CString traiteMsgRecu(char* msg);
-	CString prepareMsgAnalyse(Analyse a);
-	CString prepareMsgListeMaladies();
+	char* traiteMsgRecu(char* msg);
+	const char* prepareMsgAnalyse(Analyse a);
+	const char* prepareMsgListeMaladies();
 	list<CString> returnListeMaladies();
 	Analyse retournerAnalyse();
 private: 

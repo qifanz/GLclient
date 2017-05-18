@@ -60,8 +60,7 @@ CAnalyseGenomeClientDlg::CAnalyseGenomeClientDlg(CWnd* pParent /*=NULL*/)
 void CAnalyseGenomeClientDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	DDX_Text(pDX, IDC_EDIT1, MsgToSend);
-	DDV_MaxChars(pDX, MsgToSend, 2048);
+	
 	DDX_Text(pDX, input2, msg2);
 }
 
@@ -163,17 +162,15 @@ HCURSOR CAnalyseGenomeClientDlg::OnQueryDragIcon()
 
 void CAnalyseGenomeClientDlg::OnBnClickedButton1()
 {
+	interfacehm.startConnection();
 	
-	clientsocket.Create();
-	clientsocket.Connect((CString)"127.0.0.1",8080);
-	// TODO: 在此添加控件通知处理程序代码
 }
 
 
 void CAnalyseGenomeClientDlg::OnBnClickedsend()
 {
-	UpdateData(TRUE);
-	CString   cstr = msg2;///这儿就是取该输入框的值
-	UpdateData(FALSE);
-	clientsocket.sendMsg(cstr);
+	Genome g("Genome.txt");
+	Analyse a(g, "aaa", "1.0");
+	interfacehm.demanderAnalyseCiblee(a,"aaa");
+	
 }

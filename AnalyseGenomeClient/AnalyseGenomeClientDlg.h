@@ -4,6 +4,7 @@
 
 #pragma once
 #include "ClientSocket.h"
+#include "InterfaceHM.h"
 
 // CAnalyseGenomeClientDlg dialog
 class CAnalyseGenomeClientDlg : public CDialogEx
@@ -36,7 +37,7 @@ public:
 	CString MsgToSend;
 	afx_msg void OnBnClickedsend();
 private:
-	ClientSocket clientsocket;
+	InterfaceHM interfacehm;
 public:
 	CString msg2;
 };

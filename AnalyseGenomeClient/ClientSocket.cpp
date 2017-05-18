@@ -10,6 +10,7 @@
 
 ClientSocket::ClientSocket()
 {
+	
 }
 
 ClientSocket::~ClientSocket()
@@ -46,7 +47,7 @@ void ClientSocket::OnReceive(int nErrorCode)
 	CAsyncSocket::OnReceive(nErrorCode);
 }
 
-void ClientSocket::sendMsg(CString msg)
+void ClientSocket::sendMsg(const char* msg)
 {
 	Send(msg, 2048);
 }

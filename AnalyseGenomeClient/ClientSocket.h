@@ -11,7 +11,7 @@ public:
 	virtual ~ClientSocket();
 	virtual void OnConnect(int nErrorCode);
 	virtual void OnReceive(int nErrorCode);
-	void sendMsg(CString msg);
+	void sendMsg(const char* msg);
 
 private:
 	Analyse resultAnalyse;

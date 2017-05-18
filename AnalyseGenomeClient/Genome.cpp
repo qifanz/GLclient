@@ -5,7 +5,7 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
-
+Genome::Genome() {};
 Genome::Genome(string nomFichierGenome)
 {
 	ifstream fichier(nomFichierGenome, ios::in);
@@ -15,13 +15,15 @@ Genome::Genome(string nomFichierGenome)
 		string mot;
 		while (getline(fichier, mot)) {
 			mots.insert(mot);
+			TRACE(mot.c_str());
+			
 		}
-		cout << "Genome cr¨¦¨¦" << endl;
+		TRACE("Genome cr¨¦¨¦\r\n" );
 		fichier.close();
 	}
 	else
 	{
-		cerr << "Impossible d'ouvrir le fichier!" << endl;
+		TRACE("Impossible d'ouvrir le fichier!\r\n");
 	}
 }
 
