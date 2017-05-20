@@ -30,17 +30,16 @@ void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
 void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
 	UtilParser parser;
 	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
+	//clientSocket.sendMsg("adf\r\nakljdfa;ldfj\r\nal;kdfj");
 }
 
 
 
-
-/**
-map<list<string>, string> InterfaceHM::listerMaladies() {
+void InterfaceHM::listerMaladies() {
 	UtilParser parser;
 	clientSocket.sendMsg(parser.prepareMsgListeMaladies());
-	return NULL;
-}**/
+	
+}
 
 
 

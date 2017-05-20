@@ -22,7 +22,7 @@ public:
 	void demanderAnalyseCiblee(Analyse analyse, string maladie);
 
 
-	map<list<string>, string>  listerMaladies();
+	void listerMaladies();
 
 
 

@@ -26,21 +26,38 @@ const char* UtilParser::prepareMsgAnalyse(Analyse a)
 	TRACE("preparing \r\n");
 	string msgToSend;
 	msgToSend += "MA v1.0/r/n";
-	msgToSend += "CHECK DISEASE\r\n";
-	msgToSend += a.getType();
-	msgToSend += "\r\n";
-
-
-
+	msgToSend += "CHECK ALL\r\n";
 	Genome genome = a.getGenome();
 	for (auto it : genome.mots)
 	{
 		msgToSend += it;
 		msgToSend += "\r\n";
-		TRACE(it.c_str());
+		
 	}
-	
-	return (msgToSend.c_str());
+	TRACE (msgToSend.c_str());
+	char msg[BUFF_LEN];
+	strcpy_s(msg,msgToSend.c_str());
+	return (msg);
+}
+const char* UtilParser::prepareMsgAnalyse(Analyse a,string maladie)
+{
+	TRACE("preparing \r\n");
+	string msgToSend;
+	msgToSend += "MA v1.0/r/n";
+	msgToSend += "CHECK DISEASE\r\n";
+	msgToSend += maladie;
+	msgToSend += "\r\n";
+	Genome genome = a.getGenome();
+	for (auto it : genome.mots)
+	{
+		msgToSend += it;
+		msgToSend += "\r\n";
+
+	}
+	TRACE(msgToSend.c_str());
+	char msg[BUFF_LEN];
+	strcpy_s(msg, msgToSend.c_str());
+	return (msg);
 }
 
 const char* UtilParser::prepareMsgListeMaladies()

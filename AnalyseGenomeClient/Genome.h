@@ -8,7 +8,6 @@ class Genome
 public:
 	Genome();
 	Genome(string nomFichierGenome);
-	Genome();
 	~Genome();
 public:
 	void afficher();

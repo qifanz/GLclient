@@ -11,9 +11,11 @@ public:
 	
 	char* traiteMsgRecu(char* msg);
 	const char* prepareMsgAnalyse(Analyse a);
+	const char* prepareMsgAnalyse(Analyse a,string maladie);
 	const char* prepareMsgListeMaladies();
 	list<CString> returnListeMaladies();
 	Analyse retournerAnalyse();
+	const static int BUFF_LEN = 2048;
 private: 
 	CString version;
 	

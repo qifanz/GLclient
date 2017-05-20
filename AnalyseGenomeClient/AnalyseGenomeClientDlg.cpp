@@ -51,8 +51,7 @@ END_MESSAGE_MAP()
 
 CAnalyseGenomeClientDlg::CAnalyseGenomeClientDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_ANALYSEGENOMECLIENT_DIALOG, pParent)
-	, MsgToSend(_T(""))
-	, msg2(_T(""))
+	
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -61,7 +60,6 @@ void CAnalyseGenomeClientDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	
-	DDX_Text(pDX, input2, msg2);
 }
 
 BEGIN_MESSAGE_MAP(CAnalyseGenomeClientDlg, CDialogEx)

@@ -24,7 +24,7 @@ ClientSocket::~ClientSocket()
 void ClientSocket::OnConnect(int nErrorCode)
 {
 	// TODO: 在此添加专用代码和/或调用基类
-	Send("bonjour",2048);
+	Send("bonjour",BUFF_LEN);
 
 	CAsyncSocket::OnConnect(nErrorCode);
 }
@@ -33,7 +33,7 @@ void ClientSocket::OnConnect(int nErrorCode)
 void ClientSocket::OnReceive(int nErrorCode)
 {
 	TRACE("Msg received: \r\n");
-	const int BUFF_LEN = 2048;
+	
 	char szBuff[BUFF_LEN];
 
 	int nReceivedSize = Receive(szBuff, BUFF_LEN);
@@ -49,5 +49,5 @@ void ClientSocket::OnReceive(int nErrorCode)
 
 void ClientSocket::sendMsg(const char* msg)
 {
-	Send(msg, 2048);
+	Send(msg, BUFF_LEN);
 }
