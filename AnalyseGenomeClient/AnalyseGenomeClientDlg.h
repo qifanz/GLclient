@@ -40,4 +40,5 @@ private:
 	InterfaceHM interfacehm;
 public:
 	CString msg2;
+	afx_msg void OnBnClickedlistermaladie();
 };

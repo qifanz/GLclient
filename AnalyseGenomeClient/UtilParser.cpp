@@ -62,7 +62,12 @@ const char* UtilParser::prepareMsgAnalyse(Analyse a,string maladie)
 
 const char* UtilParser::prepareMsgListeMaladies()
 {
-	return ( ("prepareMsgListeMaladies"));
+	string msgToSend;
+	msgToSend += "MA v1.0\r\nGET DISEASES\r\n\r\n";
+	TRACE(msgToSend.c_str());
+	char msg[BUFF_LEN];
+	strcpy_s(msg, msgToSend.c_str());
+	return (msg);
 }
 
 list<CString> UtilParser::returnListeMaladies()
