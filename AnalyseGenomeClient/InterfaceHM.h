@@ -10,19 +10,15 @@ using namespace std;
 
 class InterfaceHM
 {
+	
 public:
 	InterfaceHM();
 	~InterfaceHM();
-public:
-
 	void startConnection();
 	void disconnect();
 	void receive();
 	void demanderAnalyseGenerale(Analyse analyse);
-
 	void demanderAnalyseCiblee(Analyse analyse, string maladie);
-
-
 	void listerMaladies();
 
 
@@ -32,15 +28,11 @@ private:
 	void initialise();
 
 protected:
-
+	UtilParser parser;
 	int id;
-
 	string motDePasse;
-
 	list<string> serveurs;
-
 	string version;
-
 	ClientSocket clientSocket;
 
 };

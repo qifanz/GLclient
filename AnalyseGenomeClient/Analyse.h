@@ -7,13 +7,14 @@ class Analyse
 {
 public:
 	Analyse();
-	Analyse(Genome genome, string type, string version);
+	Analyse(Genome genome, string type);
 	~Analyse();
 	void addResult(string maladie, bool resultat);
 	void afficher();
 	Genome getGenome();
 	map<string, bool> getResults();
 	string getType();
+	string getVersion();
 
 private:
 	string type;

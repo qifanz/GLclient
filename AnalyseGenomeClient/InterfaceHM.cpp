@@ -9,7 +9,7 @@ using namespace std;
 
 InterfaceHM::InterfaceHM()
 {
-
+	version="1.0";
 }
 InterfaceHM::~InterfaceHM()
 {
@@ -28,23 +28,17 @@ void InterfaceHM::disconnect()
 }
 
 void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
-	UtilParser parser;
 	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
-	//clientSocket.receiveMsg();
 }
 
 void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
-	UtilParser parser;
 	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse,maladie));
-	//clientSocket.receiveMsg();
 }
 
 
 
 void InterfaceHM::listerMaladies() {
-	UtilParser parser;
 	clientSocket.sendMsg(parser.prepareMsgListeMaladies());
-	//clientSocket.receiveMsg();
 	
 }
 void InterfaceHM::receive() {

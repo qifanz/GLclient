@@ -12,6 +12,7 @@ Genome::Genome(string nomFichierGenome)
 	if (fichier)
 	{
 		getline(fichier, version);
+		
 		string mot;
 		while (getline(fichier, mot)) {
 			mots.insert(mot);

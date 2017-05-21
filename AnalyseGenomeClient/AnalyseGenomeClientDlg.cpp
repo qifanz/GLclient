@@ -173,9 +173,15 @@ void CAnalyseGenomeClientDlg::OnBnClickedButton1()
 void CAnalyseGenomeClientDlg::OnBnClickedsend()
 {
 	Genome g("Genome.txt");
-	Analyse a(g, "AIDS", "1.0");
-	interfacehm.demanderAnalyseCiblee(a,"AIDS");
-	
+	Analyse a(g, "AIDS");
+	if (a.getVersion() != "MA v1.0")
+	{
+		AfxMessageBox(_T("the genome version is not correct."));
+	}
+	else
+	{
+		interfacehm.demanderAnalyseGenerale(a);
+	}
 }
 
 

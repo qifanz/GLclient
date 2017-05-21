@@ -7,8 +7,9 @@ Analyse::Analyse() {
 
 }
 
-Analyse::Analyse(Genome genome, string type, string version) : genome(genome), type(type), version(version)
+Analyse::Analyse(Genome genome, string type) : genome(genome), type(type), version(genome.getVersion())
 {
+	TRACE("%s\r\n", version.c_str());
 }
 
 
@@ -55,4 +56,9 @@ map<string, bool> Analyse::getResults() {
 
 string Analyse ::getType() {
 	return type;
+}
+
+string Analyse::getVersion()
+{
+	return version;
 }
