@@ -22,6 +22,11 @@ void InterfaceHM::startConnection()
 	clientSocket.Connect(CString("127.0.0.1"), 8080);
 }
 
+void InterfaceHM::disconnect()
+{
+	clientSocket.Close();
+}
+
 void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
 	UtilParser parser;
 	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
@@ -29,7 +34,7 @@ void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
 
 void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
 	UtilParser parser;
-	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
+	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse,maladie));
 }
 
 

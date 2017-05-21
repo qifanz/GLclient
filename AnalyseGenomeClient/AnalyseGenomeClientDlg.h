@@ -41,4 +41,5 @@ private:
 public:
 	CString msg2;
 	afx_msg void OnBnClickedlistermaladie();
+	afx_msg void OnBnClickedButton3();
 };

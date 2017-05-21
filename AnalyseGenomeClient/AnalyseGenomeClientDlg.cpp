@@ -69,6 +69,7 @@ BEGIN_MESSAGE_MAP(CAnalyseGenomeClientDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CAnalyseGenomeClientDlg::OnBnClickedButton1)
 	ON_BN_CLICKED(Msg_send, &CAnalyseGenomeClientDlg::OnBnClickedsend)
 	ON_BN_CLICKED(listerMaladie, &CAnalyseGenomeClientDlg::OnBnClickedlistermaladie)
+	ON_BN_CLICKED(IDC_BUTTON3, &CAnalyseGenomeClientDlg::OnBnClickedButton3)
 END_MESSAGE_MAP()
 
 
@@ -163,14 +164,15 @@ void CAnalyseGenomeClientDlg::OnBnClickedButton1()
 {
 	interfacehm.startConnection();
 	
+	
 }
 
 
 void CAnalyseGenomeClientDlg::OnBnClickedsend()
 {
 	Genome g("Genome.txt");
-	Analyse a(g, "aaa", "1.0");
-	interfacehm.demanderAnalyseCiblee(a,"aaa");
+	Analyse a(g, "AIDS", "1.0");
+	interfacehm.demanderAnalyseCiblee(a,"AIDS");
 	
 }
 
@@ -178,4 +180,10 @@ void CAnalyseGenomeClientDlg::OnBnClickedsend()
 void CAnalyseGenomeClientDlg::OnBnClickedlistermaladie()
 {
 	interfacehm.listerMaladies();
+}
+
+
+void CAnalyseGenomeClientDlg::OnBnClickedButton3()
+{
+	interfacehm.disconnect();
 }
