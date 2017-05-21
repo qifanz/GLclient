@@ -17,6 +17,7 @@ public:
 
 	void startConnection();
 	void disconnect();
+	void receive();
 	void demanderAnalyseGenerale(Analyse analyse);
 
 	void demanderAnalyseCiblee(Analyse analyse, string maladie);

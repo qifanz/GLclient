@@ -9,9 +9,10 @@ public:
 	Genome();
 	Genome(string nomFichierGenome);
 	~Genome();
-public:
 	void afficher();
-public:
+	string getVersion();
+	multiset<string> getMots();
+private:
 	string version;
 	multiset<string> mots;
 };

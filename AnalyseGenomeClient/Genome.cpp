@@ -43,3 +43,13 @@ void Genome::afficher()
 		cout << *msit << endl;
 	}
 }
+
+string Genome::getVersion()
+{
+	return version;
+}
+
+multiset<string> Genome::getMots()
+{
+	return mots;
+}

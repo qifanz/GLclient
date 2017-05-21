@@ -10,7 +10,8 @@ public:
 	ClientSocket();
 	virtual ~ClientSocket();
 	virtual void OnConnect(int nErrorCode);
-	virtual void OnReceive(int nErrorCode);
+	//virtual void OnReceive(int nErrorCode);
+	void receiveMsg();
 	void sendMsg(const char* msg);
 	const static int BUFF_LEN = 2048;
 private:

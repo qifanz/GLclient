@@ -30,11 +30,13 @@ void InterfaceHM::disconnect()
 void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
 	UtilParser parser;
 	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
+	//clientSocket.receiveMsg();
 }
 
 void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
 	UtilParser parser;
 	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse,maladie));
+	//clientSocket.receiveMsg();
 }
 
 
@@ -42,7 +44,11 @@ void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
 void InterfaceHM::listerMaladies() {
 	UtilParser parser;
 	clientSocket.sendMsg(parser.prepareMsgListeMaladies());
+	//clientSocket.receiveMsg();
 	
+}
+void InterfaceHM::receive() {
+	clientSocket.receiveMsg();
 }
 
 

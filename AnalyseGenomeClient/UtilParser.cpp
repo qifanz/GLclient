@@ -28,7 +28,7 @@ const char* UtilParser::prepareMsgAnalyse(Analyse a)
 	msgToSend += "MA v1.0\r\n";
 	msgToSend += "CHECK ALL\r\n";
 	Genome genome = a.getGenome();
-	for (auto it : genome.mots)
+	for (auto it : genome.getMots())
 	{
 		msgToSend += it;
 		msgToSend += ";";
@@ -49,7 +49,7 @@ const char* UtilParser::prepareMsgAnalyse(Analyse a,string maladie)
 	msgToSend += maladie;
 	msgToSend += "\r\n";
 	Genome genome = a.getGenome();
-	for (auto it : genome.mots)
+	for (auto it : genome.getMots())
 	{
 		msgToSend += it;
 		msgToSend += ";";

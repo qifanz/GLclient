@@ -29,7 +29,7 @@ void ClientSocket::OnConnect(int nErrorCode)
 	CAsyncSocket::OnConnect(nErrorCode);
 }
 
-
+/**
 void ClientSocket::OnReceive(int nErrorCode)
 {
 	TRACE("Msg received: \r\n");
@@ -43,11 +43,30 @@ void ClientSocket::OnReceive(int nErrorCode)
 
 	szBuff[nReceivedSize - 1] = '\0';
 	TRACE(szBuff);
+	AfxMessageBox(CString(szBuff));
 
 	CAsyncSocket::OnReceive(nErrorCode);
+}**/
+
+void ClientSocket::receiveMsg()
+{
+	TRACE("Msg received: \r\n");
+
+	char szBuff[BUFF_LEN];
+
+	int nReceivedSize = recv(*this,szBuff, BUFF_LEN, 0);
+
+	if (nReceivedSize <= 0)
+		return;
+
+	szBuff[nReceivedSize - 1] = '\0';
+	TRACE(szBuff);
+	AfxMessageBox(CString(szBuff));
+
+	
 }
 
 void ClientSocket::sendMsg(const char* msg)
 {
-	Send(msg, BUFF_LEN);
+	Send(msg, BUFF_LEN,0);
 }

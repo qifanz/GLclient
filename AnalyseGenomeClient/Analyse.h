@@ -9,8 +9,6 @@ public:
 	Analyse();
 	Analyse(Genome genome, string type, string version);
 	~Analyse();
-
-public:
 	void addResult(string maladie, bool resultat);
 	void afficher();
 	Genome getGenome();
