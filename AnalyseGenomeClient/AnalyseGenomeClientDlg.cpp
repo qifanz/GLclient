@@ -70,7 +70,7 @@ BEGIN_MESSAGE_MAP(CAnalyseGenomeClientDlg, CDialogEx)
 	ON_BN_CLICKED(Msg_send, &CAnalyseGenomeClientDlg::OnBnClickedsend)
 	ON_BN_CLICKED(listerMaladie, &CAnalyseGenomeClientDlg::OnBnClickedlistermaladie)
 	ON_BN_CLICKED(IDC_BUTTON3, &CAnalyseGenomeClientDlg::OnBnClickedButton3)
-	ON_BN_CLICKED(IDC_BUTTON4, &CAnalyseGenomeClientDlg::OnBnClickedButton4)
+
 	
 END_MESSAGE_MAP()
 
@@ -197,7 +197,4 @@ void CAnalyseGenomeClientDlg::OnBnClickedButton3()
 }
 
 
-void CAnalyseGenomeClientDlg::OnBnClickedButton4()
-{
-	interfacehm.receive();
-}
+

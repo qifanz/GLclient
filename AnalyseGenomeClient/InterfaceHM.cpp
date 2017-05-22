@@ -29,10 +29,13 @@ void InterfaceHM::disconnect()
 
 void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
 	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
+	AfxMessageBox(CString(clientSocket.receiveMsg()));
 }
 
 void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
 	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse,maladie));
+	
+	AfxMessageBox(CString(clientSocket.receiveMsg()));
 }
 
 
@@ -40,10 +43,10 @@ void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
 void InterfaceHM::listerMaladies() {
 	clientSocket.sendMsg(parser.prepareMsgListeMaladies());
 	
+	AfxMessageBox(CString(clientSocket.receiveMsg()));
+	
 }
-void InterfaceHM::receive() {
-	clientSocket.receiveMsg();
-}
+
 
 
 
