@@ -164,7 +164,8 @@ HCURSOR CAnalyseGenomeClientDlg::OnQueryDragIcon()
 
 void CAnalyseGenomeClientDlg::OnBnClickedButton1()
 {
-	interfacehm.startConnection();
+//	interfacehm.startConnection();
+	interfacehm.initialise();
 	
 	
 }

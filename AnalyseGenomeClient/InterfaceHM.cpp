@@ -28,8 +28,23 @@ void InterfaceHM::disconnect()
 }
 
 void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
-	clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
-	AfxMessageBox(CString(clientSocket.receiveMsg()));
+	for (auto s : serveurs)
+	{
+		clientSocket.Create(); 
+		int returncode = clientSocket.Connect(CString(s.getAddr().c_str()), s.getPort());
+		
+			clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
+			AfxMessageBox(CString(clientSocket.receiveMsg()));
+			
+
+		
+			
+
+			clientSocket.Close();
+		
+	
+	}
+	
 }
 
 void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
@@ -41,10 +56,41 @@ void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
 
 
 void InterfaceHM::listerMaladies() {
-	clientSocket.sendMsg(parser.prepareMsgListeMaladies());
+	for (auto s : serveurs)
+	{
+		clientSocket.Create();
+		int returncode = clientSocket.Connect(CString(s.getAddr().c_str()), s.getPort());
+			clientSocket.sendMsg(parser.prepareMsgListeMaladies());
+			list<string> maladies = parser.parseListeMaladies(clientSocket.receiveMsg());
+			for (auto m : maladies)
+			{
+				listeMaladies.insert(pair<string, Server>(m, s));
+			}
+			clientSocket.Close();		
+	}
+
+	//pour afficher
+	set<string> afficheMaladie;
+	for (auto mm : listeMaladies)
+	{
+		afficheMaladie.insert(mm.first);
+	}
+	string toShow;
+	for (auto a : afficheMaladie)
+	{
+		toShow += a;
+		toShow += "\r\n";
+	}
+	AfxMessageBox(CString(toShow.c_str()));
 	
-	AfxMessageBox(CString(clientSocket.receiveMsg()));
-	
+}
+
+void InterfaceHM::initialise()
+{
+
+	serveurs.push_back( Server("127.0.0.1", 8080));
+	serveurs.push_back(Server("127.0.0.1", 8085));
+	serveurs.push_back(Server("127.0.0.1", 8090));
 }
 
 

@@ -16,11 +16,6 @@ UtilParser::~UtilParser()
 
 
 
-char* UtilParser::traiteMsgRecu(char * msg)
-{
-	TRACE(msg);
-	return (("test"));
-}
 
 const char* UtilParser::prepareMsgAnalyse(Analyse a)
 {
@@ -78,12 +73,30 @@ const char* UtilParser::prepareMsgListeMaladies()
 	return (msg);
 }
 
-list<string> UtilParser::returnListeMaladies()
+list<string> UtilParser::parseListeMaladies(char* msg)
 {
-	return list<string>();
+	list<string> maladie;
+	string msgRecu(msg);
+	//AfxMessageBox(CString(msgRecu.c_str()));
+	int pos = msgRecu.find("\r\n");
+	pos = msgRecu.find("\r\n", pos+1);
+	int pos1 = 0;
+	while (true)
+	{
+		pos1 = msgRecu.find("\r\n", pos+1);
+		string temp = msgRecu.substr(pos + 2, pos1 - pos - 2);
+		//AfxMessageBox(CString(temp.c_str()));
+		pos = pos1;
+		if (temp == "") {
+			break;
+		}
+		maladie.push_back(temp);
+		TRACE("disease found %s\r\n", temp.c_str());
+	}
+	return maladie;
 }
 
-Analyse UtilParser::retournerAnalyse()
+Analyse UtilParser::parseAnalyse(char* msg)
 {
 	return Analyse(Genome("123"),"123");
 }

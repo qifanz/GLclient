@@ -193,6 +193,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="InterfaceHM.h" />
+    <ClInclude Include="Server.h" />
     <ClInclude Include="UtilParser.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -205,6 +206,7 @@
     <ClCompile Include="ClientSocket.cpp" />
     <ClCompile Include="Genome.cpp" />
     <ClCompile Include="InterfaceHM.cpp" />
+    <ClCompile Include="Server.cpp" />
     <ClCompile Include="UtilParser.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

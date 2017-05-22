@@ -6,11 +6,14 @@
 #include <list>
 #include "UtilParser.h"
 #include "ClientSocket.h"
+#include "Server.h"
 using namespace std;
 
 class InterfaceHM
 {
 	
+
+
 public:
 	InterfaceHM();
 	~InterfaceHM();
@@ -22,7 +25,6 @@ public:
 
 
 
-private:
 
 	void initialise();
 
@@ -30,7 +32,8 @@ protected:
 	UtilParser parser;
 	int id;
 	string motDePasse;
-	list<string> serveurs;
+	list<Server> serveurs;
+	multimap<string , Server > listeMaladies;
 	string version;
 	ClientSocket clientSocket;
 
