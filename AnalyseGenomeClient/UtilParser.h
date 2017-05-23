@@ -14,7 +14,8 @@ public:
 	const char* prepareMsgAnalyse(Analyse a,string maladie);
 	const char* prepareMsgListeMaladies();
 	list<string> parseListeMaladies(char* msg);
-	Analyse parseAnalyse(char* msg);
+	Analyse* parseResultatCiblee(char* msg);
+	Analyse* parseResultatGeneral(char* msg);
 	const static int BUFF_LEN = 2048;
 
 private: 

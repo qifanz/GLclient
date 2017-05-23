@@ -96,7 +96,15 @@ list<string> UtilParser::parseListeMaladies(char* msg)
 	return maladie;
 }
 
-Analyse UtilParser::parseAnalyse(char* msg)
+Analyse* UtilParser::parseResultatCiblee(char * msg)
 {
-	return Analyse(Genome("123"),"123");
+	Analyse *a = new Analyse;
+	return new Analyse;
 }
+
+Analyse* UtilParser::parseResultatGeneral(char * msg)
+{
+	return new Analyse;
+}
+
+
