@@ -12,7 +12,7 @@ public:
 	virtual void OnConnect(int nErrorCode);
 	char* receiveMsg();
 
-	void sendMsg(const char* msg);
+	int sendMsg(const char* msg);
 	const static int BUFF_LEN = 2048;
 private:
 

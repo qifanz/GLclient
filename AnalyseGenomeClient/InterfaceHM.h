@@ -17,16 +17,16 @@ class InterfaceHM
 public:
 	InterfaceHM();
 	~InterfaceHM();
-	void startConnection();
-	void disconnect();
+	//void startConnection();
+	//void disconnect();
 	void demanderAnalyseGenerale(Analyse analyse);
 	void demanderAnalyseCiblee(Analyse analyse, string maladie);
-	void listerMaladies();
-
-
-
+	void demanderListerMaladies();
+	void afficherResultatListeMaladies();
 
 	void initialise();
+protected:
+	void logger(char* msg);
 
 protected:
 	UtilParser parser;

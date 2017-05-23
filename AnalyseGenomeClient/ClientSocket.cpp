@@ -10,7 +10,7 @@
 
 ClientSocket::ClientSocket()
 {
-	
+
 }
 
 ClientSocket::~ClientSocket()
@@ -33,12 +33,12 @@ void ClientSocket::OnConnect(int nErrorCode)
 
 char* ClientSocket::receiveMsg()
 {
-	char *szBuff=new char[2048];
+	char *szBuff = new char[2048];
 	int nReceivedSize = 0;
 	while (true)
 	{
-		 nReceivedSize = recv(*this, szBuff, BUFF_LEN, 0);
-		if (nReceivedSize >0 )
+		nReceivedSize = recv(*this, szBuff, BUFF_LEN, 0);
+		if (nReceivedSize > 0)
 			break;
 		Sleep(100);
 	}
@@ -47,10 +47,10 @@ char* ClientSocket::receiveMsg()
 
 	return szBuff;
 
-	
+
 }
 
-void ClientSocket::sendMsg(const char* msg)
+int ClientSocket::sendMsg(const char* msg)
 {
-	Send(msg, BUFF_LEN,0);
+	return Send(msg, BUFF_LEN, 0);
 }
