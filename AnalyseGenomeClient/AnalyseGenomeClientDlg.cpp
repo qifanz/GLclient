@@ -19,12 +19,12 @@ class CAboutDlg : public CDialogEx
 public:
 	CAboutDlg();
 
-// Dialog Data
+	// Dialog Data
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_ABOUTBOX };
 #endif
 
-	protected:
+protected:
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 
 // Implementation
@@ -51,7 +51,10 @@ END_MESSAGE_MAP()
 
 CAnalyseGenomeClientDlg::CAnalyseGenomeClientDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_ANALYSEGENOMECLIENT_DIALOG, pParent)
-	
+
+
+	, nomMaladieSaisie(_T(""))
+	, etatGenome(_T("genome non charge"))
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -59,7 +62,9 @@ CAnalyseGenomeClientDlg::CAnalyseGenomeClientDlg(CWnd* pParent /*=NULL*/)
 void CAnalyseGenomeClientDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
-	
+
+	DDX_Text(pDX, IDC_EDIT2, nomMaladieSaisie);
+	DDX_Text(pDX, IDC_EDIT5, etatGenome);
 }
 
 BEGIN_MESSAGE_MAP(CAnalyseGenomeClientDlg, CDialogEx)
@@ -69,9 +74,10 @@ BEGIN_MESSAGE_MAP(CAnalyseGenomeClientDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON1, &CAnalyseGenomeClientDlg::OnBnClickedButton1)
 	ON_BN_CLICKED(Msg_send, &CAnalyseGenomeClientDlg::OnBnClickedsend)
 	ON_BN_CLICKED(listerMaladie, &CAnalyseGenomeClientDlg::OnBnClickedlistermaladie)
-	
 
-	
+
+
+	ON_BN_CLICKED(IDC_BUTTON3, &CAnalyseGenomeClientDlg::OnBnClickedButton3)
 END_MESSAGE_MAP()
 
 
@@ -107,7 +113,9 @@ BOOL CAnalyseGenomeClientDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
-
+	interfacehm.initialise();
+	interfacehm.demanderListerMaladies();
+	
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
@@ -164,17 +172,26 @@ HCURSOR CAnalyseGenomeClientDlg::OnQueryDragIcon()
 
 void CAnalyseGenomeClientDlg::OnBnClickedButton1()
 {
-//	interfacehm.startConnection();
-	interfacehm.initialise();
-	
-	
+	//	interfacehm.startConnection();
+
+	UpdateData(true);
+	//CString nomFichier = nomFichierGenome;
+	CString nomFichier;
+	GetDlgItemText(IDC_MFCEDITBROWSE1, nomFichier);
+	UpdateData(false);
+	g = new Genome(nomFichier);
+	if (g != nullptr)
+	{
+		UpdateData(true);
+		etatGenome = (CString)"genome charge";
+		UpdateData(false);
+	}
 }
 
 
 void CAnalyseGenomeClientDlg::OnBnClickedsend()
 {
-	Genome g("Genome.txt");
-	Analyse a(g, "AIDS");
+	/**Analyse a(*g,"Genrale");
 	if (a.getVersion() != "MA v1.0")
 	{
 		AfxMessageBox(_T("the genome version is not correct."));
@@ -182,12 +199,29 @@ void CAnalyseGenomeClientDlg::OnBnClickedsend()
 	else
 	{
 		interfacehm.demanderAnalyseGenerale(a);
+	}**/
+	if (g == nullptr)
+	{
+		AfxMessageBox(_T("Veuillez charger un fichier genome avant de lancer une analyse."));
+	}
+	else
+	{
+		Analyse a(*g, "Generale");
+		if (a.getVersion() != "MA v1.0")
+		{
+			AfxMessageBox(_T("the genome version is not correct."));
+		}
+		else
+		{
+			interfacehm.demanderAnalyseGenerale(a);
+		}
 	}
 }
 
 
 void CAnalyseGenomeClientDlg::OnBnClickedlistermaladie()
 {
+
 	interfacehm.demanderListerMaladies();
 	interfacehm.afficherResultatListeMaladies();
 }
@@ -197,3 +231,27 @@ void CAnalyseGenomeClientDlg::OnBnClickedlistermaladie()
 
 
 
+
+
+void CAnalyseGenomeClientDlg::OnBnClickedButton3()
+{
+	UpdateData(true);
+
+	CT2CA pszName(nomMaladieSaisie);
+	string nomMaladie(pszName);
+	UpdateData(false);
+	if (g == nullptr)
+	{
+		AfxMessageBox(_T("Veuillez charger un fichier genome avant de lancer une analyse."));
+	}
+	else if (nomMaladie == "")
+	{
+		AfxMessageBox(_T("Veuillez saisir un nom de la maladie."));
+	}
+	else
+	{
+		Analyse a(*g, nomMaladie);
+		interfacehm.demanderAnalyseCiblee(a, nomMaladie);
+	}
+	// TODO: 在此添加控件通知处理程序代码
+}

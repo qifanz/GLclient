@@ -23,6 +23,7 @@ public:
 	void demanderAnalyseCiblee(Analyse analyse, string maladie);
 	void demanderListerMaladies();
 	void afficherResultatListeMaladies();
+	void afficherResultatAnalyse(map<string, bool> res);
 
 	void initialise();
 protected:

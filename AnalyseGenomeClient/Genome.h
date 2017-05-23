@@ -7,7 +7,7 @@ class Genome
 {
 public:
 	Genome();
-	Genome(string nomFichierGenome);
+	Genome(CString nomFichierGenome);
 	~Genome();
 	void afficher();
 	string getVersion();

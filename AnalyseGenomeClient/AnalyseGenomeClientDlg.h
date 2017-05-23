@@ -38,9 +38,13 @@ public:
 	afx_msg void OnBnClickedsend();
 private:
 	InterfaceHM interfacehm;
+	Genome * g;
 public:
 	CString msg2;
 	afx_msg void OnBnClickedlistermaladie();
 	
 
+	CString nomMaladieSaisie;
+	afx_msg void OnBnClickedButton3();
+	CString etatGenome;
 };

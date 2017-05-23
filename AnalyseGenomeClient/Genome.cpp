@@ -6,25 +6,31 @@
 #include <fstream>
 using namespace std;
 Genome::Genome() {};
-Genome::Genome(string nomFichierGenome)
+Genome::Genome(CString nomFichierGenome)
 {
 	ifstream fichier(nomFichierGenome, ios::in);
 	if (fichier)
 	{
-		getline(fichier, version);
 		
-		string mot;
-		while (getline(fichier, mot)) {
-			mots.insert(mot);
-			TRACE(mot.c_str());
-			
+		getline(fichier, version);
+		if (!strstr(version.c_str(), ("MA v"))) {
+			AfxMessageBox((CString)("Ce n'est pas un fichier correcte!!\r\n"));
+			fichier.close();
 		}
-		TRACE("Genome cr¨¦¨¦\r\n" );
-		fichier.close();
+		else {
+			string mot;
+			while (getline(fichier, mot)) {
+				mots.insert(mot);
+				TRACE(mot.c_str());
+
+			}
+			AfxMessageBox((CString)"Genome charge\r\n");
+			fichier.close();
+		}
 	}
 	else
 	{
-		TRACE("Impossible d'ouvrir le fichier!\r\n");
+		AfxMessageBox((CString)("Impossible d'ouvrir le fichier!\r\n"));
 	}
 }
 

@@ -99,12 +99,43 @@ list<string> UtilParser::parseListeMaladies(char* msg)
 Analyse* UtilParser::parseResultatCiblee(char * msg)
 {
 	Analyse *a = new Analyse;
-	return new Analyse;
+	string msgRecu(msg);
+	int pos = msgRecu.find("\r\n");
+	int pos1 = msgRecu.find("\r\n", pos + 1);
+	int pos2 = msgRecu.find("\r\n", pos1 + 1);
+	if (msgRecu.substr(pos1 + 2, pos2 - pos1 - 2) == "1")
+	{
+		a->addResult(msgRecu.substr(pos + 10, pos1 - pos - 10), true);
+		TRACE("%s\r\n", msgRecu.substr(pos1 + 2, pos2 - pos1 - 2).c_str());
+		TRACE("%s\r\n", msgRecu.substr(pos + 10, pos1 - pos - 10).c_str());
+	}
+	else {
+		a->addResult(msgRecu.substr(pos + 10, pos1 - pos - 10), false);
+		TRACE("%s\r\n", msgRecu.substr(pos1 + 2, pos2 - pos1 - 2).c_str());
+		TRACE("%s\r\n", msgRecu.substr(pos + 10, pos1 - pos - 10).c_str());
+	}
+
+
+	return a;
 }
 
 Analyse* UtilParser::parseResultatGeneral(char * msg)
 {
-	return new Analyse;
+	TRACE("%s\r\n", msg);
+	Analyse *a = new Analyse;
+	string msgRecu(msg);
+	int pos = msgRecu.find("\r\n");
+	int pos1 = msgRecu.find("\r\n", pos + 1);
+	while (true)
+	{
+		if (msgRecu.substr(pos + 2, pos1 - pos - 2) == "")
+			break;
+		a->addResult(msgRecu.substr(pos +10, pos1 - pos - 10), true);
+		
+		pos = pos1;
+		pos1 = msgRecu.find("\r\n", pos + 1);
+	}
+	return a;
 }
 
 
