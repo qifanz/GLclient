@@ -13,6 +13,7 @@ public:
 	friend ostream& operator<<(ostream &flux, Analyse const& analyse);
 	void afficher(ostream &flux) const;
 	string getVersion();
+	string getType();
 
 public :
 	map<string, bool> resultats;

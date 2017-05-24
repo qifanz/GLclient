@@ -44,3 +44,8 @@ string Analyse::getVersion()
 {
 	return version;
 }
+
+string Analyse::getType()
+{
+	return type;
+}
