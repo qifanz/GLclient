@@ -4,7 +4,7 @@
 #include <list>
 // ClientSocket ÃüÁîÄ¿±ê
 
-class ClientSocket : public CAsyncSocket
+class ClientSocket : public CSocket
 {
 public:
 	ClientSocket();

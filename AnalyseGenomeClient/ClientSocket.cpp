@@ -40,7 +40,7 @@ char* ClientSocket::receiveMsg()
 		nReceivedSize = recv(*this, szBuff, BUFF_LEN, 0);
 		if (nReceivedSize > 0)
 			break;
-		Sleep(100);
+		Sleep(10);
 	}
 
 	szBuff[nReceivedSize - 1] = '\0';
