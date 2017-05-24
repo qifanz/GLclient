@@ -2,6 +2,7 @@
 #include <string>
 #include <map>
 #include <list>
+#include <fstream>
 #include "InterfaceHM.h"
 
 using namespace std;
@@ -134,9 +135,27 @@ void InterfaceHM::afficherResultatAnalyse(map<string, bool> res)
 
 void InterfaceHM::initialise()
 {
-	serveurs.push_back(Server("127.0.0.1", 8080));
-	serveurs.push_back(Server("127.0.0.1", 8085));
-	serveurs.push_back(Server("127.0.0.1", 8090));
+	ifstream fichier("res/listeServeurs.txt", ios::in);
+	if (fichier)
+	{
+
+		getline(fichier, version);
+			string line;
+			string adresse;
+			string port;
+			while (getline(fichier, line)) {
+				size_t pos = line.find(":");
+				adresse = line.substr(0, pos);
+				port = line.substr(pos+1);
+				serveurs.push_back(Server(adresse, stoi(port)));
+			}
+			fichier.close();
+		}
+	
+	else
+	{
+		AfxMessageBox((CString)("Impossible d'ouvrir le fichier de liste des serveurs!\r\n"));
+	}
 }
 
 void InterfaceHM::logger(char * msg)
