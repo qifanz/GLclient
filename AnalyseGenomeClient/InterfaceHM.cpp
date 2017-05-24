@@ -160,6 +160,20 @@ void InterfaceHM::initialise()
 
 void InterfaceHM::logger(char * msg)
 {
+
+	{
+		ofstream fichier("res/log.txt", ios::out | ios::app); 
+
+		if (fichier)
+		{
+			fichier << msg << endl;
+			fichier.close();
+		}
+		else
+			AfxMessageBox((CString)("Impossible d'ouvrir le fichier log.txt!\r\n"));
+
+	}
+
 }
 
 
