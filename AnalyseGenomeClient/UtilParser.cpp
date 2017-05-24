@@ -138,4 +138,9 @@ Analyse* UtilParser::parseResultatGeneral(char * msg)
 	return a;
 }
 
+string UtilParser::getVersion()
+{
+	return version;
+}
+
 
