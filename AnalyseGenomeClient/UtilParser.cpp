@@ -32,7 +32,7 @@ const char* UtilParser::prepareMsgAnalyse(Analyse a)
 		msgToSend += ";";
 		
 	}
-	msgToSend += "\r\n";
+	msgToSend += "\r\n\r\n";
 	TRACE (msgToSend.c_str());
 	char msg[BUFF_LEN];
 	strcpy_s(msg,msgToSend.c_str());
@@ -54,7 +54,7 @@ const char* UtilParser::prepareMsgAnalyse(Analyse a,string maladie)
 		msgToSend += ";";
 
 	}
-	msgToSend += "\r\n";
+	msgToSend += "\r\n\r\n";
 	TRACE(msgToSend.c_str());
 	char msg[BUFF_LEN];
 	strcpy_s(msg, msgToSend.c_str());
