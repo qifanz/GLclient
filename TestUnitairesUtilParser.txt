@@ -1,0 +1,116 @@
+Test unitaires :
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\UtilParser\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+- prepareMsgAnalyse(Analyse a)
+
+UtilParser parser;
+Genome g("GenomeTest.txt");
+Analyse a(g,"Generale");
+string version = parser.getVersion();
+char * msg = parser.prepareMsgAnalyse(a);
+string resultat = version + "\r\nCHECK ALL\r\nAAAT;TTTC;CCCG;GGGG;AACC;TTGG;ATAT;GCGC;\r\n\r\n";
+char * result = resultat.c_str();
+
+Assert::AreEqual(
+result,
+msg,
+1)
+
+
+
+- prepareMsgAnalyse(Analyse a,string maladie)
+
+UtilParser parser;
+Genome g("GenomeTest.txt");
+Analyse a(g,"H5N1");
+string version = parser.getVersion();
+char * msg = parser.prepareMsgAnalyse(a,a.getType());
+string resultat = version + "\r\nCHECK DISEASE\r\nH5N1\r\nAAAT;TTTC;CCCG;GGGG;AACC;TTGG;ATAT;GCGC;\r\n\r\n";
+char * result = resultat.c_str();
+
+Assert::AreEqual(
+result,
+msg,
+1)
+
+- prepareMsgListeMaladies()
+
+UtilParser parser;
+string version = parser.getVersion();
+string resultat = version + "\r\nGET DISEASES\r\n\r\n";
+char * result = resultat.c_str();
+char * msg = parser.prepareMsgListeMaladies();
+
+Assert(strcmp(msg,result)==0);
+
+
+
+- parseListeMaladies(char* msg) (A verifier)
+
+UtilParser parser;
+string message = "MA v1.0\r\nDISEASES\r\nH5N1\r\nH5N2\r\nPeste\r\n\r\n";
+char * msg = message.c_str();
+list<string> result;
+result.push_back("H5N1");
+result.push_back("H5N2");
+result.push_back("Peste");
+list<string> retour = parser.parseListeMaladies(msg);
+bool identique = true;
+
+list<string>::const_iterator
+		lit(retour.begin()),
+		lend(retour.end()),
+		lit2(result.begin());
+for (; lit != lend; ++lit) {
+	lit2++;
+	Assert::AreEqual(
+		*lit,
+		*lit2,
+		1);
+		
+}
+
+
+- parseResultatCiblee(char* msg)
+
+
+UtilParser parser;
+string message = "MA v1.0\r\nDISEASE H5N1\r\n1\r\n\r\n";
+char * msg = message.c_str();
+Analyse * a = parser.parseResultatCiblee(msg);
+string maladie = a->resultats[0].first;
+bool resultat = a->resultats[0].second;
+Assert::AreEqual(
+	maladie,
+	"H5N1",
+	1);
+
+Assert::IsTrue(resultat);
+
+
+- parseResultatGeneral(char * msg) 
+
+UtilParser parser;
+string message = "MA v1.0\r\nDISEASE H5N1\r\nDISEASE H5N2\r\n\r\n";
+char * msg = message.c_str();
+Analyse * a = parser.parseResultatGeneral(msg);
+string maladie = a->resultats[0].first;
+bool resultat = a->resultats[0].second;
+Assert::AreEqual(
+	maladie,
+	"H5N1",
+	1);
+
+Assert::IsTrue(resultat);
+
+maladie = a->resultats[1].first;
+resultat = a->resultats[1].second;
+Assert::AreEqual(
+	maladie,
+	"H5N2",
+	1);
+
+Assert::IsTrue(resultat);
+
+
