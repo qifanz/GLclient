@@ -16,6 +16,7 @@ public:
 	list<string> parseListeMaladies(char* msg);
 	Analyse* parseResultatCiblee(char* msg);
 	Analyse* parseResultatGeneral(char* msg);
+	string getVersion();
 	const static int BUFF_LEN = 2048;
 
 private: 
