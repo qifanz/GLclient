@@ -24,7 +24,7 @@ void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
 		int returncode = clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
 		if (returncode!=-1) {
 			Analyse* a = parser.parseResultatGeneral(clientSocket.receiveMsg());
-			for (auto res : a->getResults())
+			for (auto res : a->resultats)
 			{
 			
 				result.insert(res);
@@ -58,7 +58,7 @@ void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
 		int returncode = clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse, maladie));
 		if (returncode != -1) {
 			Analyse * a = parser.parseResultatCiblee(clientSocket.receiveMsg());
-			for (auto res : a->getResults())
+			for (auto res : a->resultats)
 			{
 				result.insert(res);
 				if (res.second)
@@ -134,7 +134,7 @@ void InterfaceHM::afficherResultatAnalyse(map<string, bool> res)
 
 void InterfaceHM::initialise()
 {
-	serveurs.push_back(Server("127.0.0.1", 8080));
+	serveurs.push_back(Server("134.214.106.32", 8080));
 	serveurs.push_back(Server("127.0.0.1", 8085));
 	serveurs.push_back(Server("127.0.0.1", 8090));
 }

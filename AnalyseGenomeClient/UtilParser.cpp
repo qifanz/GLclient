@@ -25,8 +25,8 @@ const char* UtilParser::prepareMsgAnalyse(Analyse a)
 	msgToSend += version;
 	msgToSend += "\r\n";
 	msgToSend += "CHECK ALL\r\n";
-	Genome genome = a.getGenome();
-	for (auto it : genome.getMots())
+	Genome genome = a.genome;
+	for (auto it : genome.mots)
 	{
 		msgToSend += it;
 		msgToSend += ";";
@@ -47,8 +47,8 @@ const char* UtilParser::prepareMsgAnalyse(Analyse a,string maladie)
 	msgToSend += "\r\nCHECK DISEASE\r\n";
 	msgToSend += maladie;
 	msgToSend += "\r\n";
-	Genome genome = a.getGenome();
-	for (auto it : genome.getMots())
+	Genome genome = a.genome;
+	for (auto it : genome.mots)
 	{
 		msgToSend += it;
 		msgToSend += ";";
@@ -105,12 +105,12 @@ Analyse* UtilParser::parseResultatCiblee(char * msg)
 	int pos2 = msgRecu.find("\r\n", pos1 + 1);
 	if (msgRecu.substr(pos1 + 2, pos2 - pos1 - 2) == "1")
 	{
-		a->addResult(msgRecu.substr(pos + 10, pos1 - pos - 10), true);
+		a->resultats.insert(pair<string, bool>(msgRecu.substr(pos + 10, pos1 - pos - 10),true));
 		TRACE("%s\r\n", msgRecu.substr(pos1 + 2, pos2 - pos1 - 2).c_str());
 		TRACE("%s\r\n", msgRecu.substr(pos + 10, pos1 - pos - 10).c_str());
 	}
 	else {
-		a->addResult(msgRecu.substr(pos + 10, pos1 - pos - 10), false);
+		a->resultats.insert(pair<string, bool>(msgRecu.substr(pos + 10, pos1 - pos - 10), false));
 		TRACE("%s\r\n", msgRecu.substr(pos1 + 2, pos2 - pos1 - 2).c_str());
 		TRACE("%s\r\n", msgRecu.substr(pos + 10, pos1 - pos - 10).c_str());
 	}
@@ -130,7 +130,7 @@ Analyse* UtilParser::parseResultatGeneral(char * msg)
 	{
 		if (msgRecu.substr(pos + 2, pos1 - pos - 2) == "")
 			break;
-		a->addResult(msgRecu.substr(pos +10, pos1 - pos - 10), true);
+		a->resultats.insert(pair<string, bool>(msgRecu.substr(pos + 10, pos1 - pos - 10), true));
 		
 		pos = pos1;
 		pos1 = msgRecu.find("\r\n", pos + 1);

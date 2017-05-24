@@ -5,7 +5,9 @@
 #include <iostream>
 #include <fstream>
 using namespace std;
-Genome::Genome() {};
+Genome::Genome() {
+	version = "1.1";
+};
 Genome::Genome(CString nomFichierGenome)
 {
 	ifstream fichier(nomFichierGenome, ios::in);
@@ -14,7 +16,7 @@ Genome::Genome(CString nomFichierGenome)
 		
 		getline(fichier, version);
 		if (!strstr(version.c_str(), ("MA v"))) {
-			AfxMessageBox((CString)("Ce n'est pas un fichier correcte!!\r\n"));
+			AfxMessageBox((CString)("Ce n'est pas un fichier correct!!\r\n"));
 			fichier.close();
 		}
 		else {
@@ -56,7 +58,3 @@ string Genome::getVersion()
 	return version;
 }
 
-multiset<string> Genome::getMots()
-{
-	return mots;
-}

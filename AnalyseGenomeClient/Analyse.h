@@ -9,18 +9,18 @@ public:
 	Analyse();
 	Analyse(Genome genome, string type);
 	~Analyse();
-	void addResult(string maladie, bool resultat);
-	void afficher();
-	Genome getGenome();
-	map<string, bool> getResults();
-	string getType();
+	
+	friend ostream& operator<<(ostream &flux, Analyse const& analyse);
+	void afficher(ostream &flux) const;
 	string getVersion();
 
-private:
-	string type;
-	string version;
+public :
 	map<string, bool> resultats;
 	Genome genome;
+	string type;
+
+private :
+	string version;
 };
 
 

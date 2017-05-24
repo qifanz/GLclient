@@ -11,8 +11,10 @@ public:
 	~Genome();
 	void afficher();
 	string getVersion();
-	multiset<string> getMots();
+
+public:
+	multiset<string> mots;
+
 private:
 	string version;
-	multiset<string> mots;
 };

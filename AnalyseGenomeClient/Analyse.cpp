@@ -4,7 +4,7 @@
 using namespace std;
 
 Analyse::Analyse() {
-
+	version = "1.1";
 }
 
 Analyse::Analyse(Genome genome, string type) : genome(genome), type(type), version(genome.getVersion())
@@ -17,46 +17,28 @@ Analyse::~Analyse()
 {
 }
 
-void Analyse::addResult(string maladie, bool resultat)
+
+ostream & operator<<(ostream & flux, Analyse const & analyse)
 {
-	map<string, bool>::iterator it;
-	it = resultats.find(maladie);
-	if (it != resultats.end()) {
-		it->second = resultat;
-	}
-	else {
-		resultats.insert(pair<string, bool>(maladie, resultat));
-	}
+	analyse.afficher(flux);
+	return flux;
 }
 
-void Analyse::afficher()
+void Analyse::afficher(ostream &flux) const
 {
-	cout << version << endl << type << endl;
-	for (map<string, bool>::iterator it = resultats.begin(); it != resultats.end(); ++it)
+	flux << version << endl << type << endl;
+	for (map<string, bool>::const_iterator it = resultats.begin(); it != resultats.end(); ++it)
 	{
-		cout << it->first << " : ";
+		flux << it->first << " : ";
 		if (it->second) {
-			cout << "oui" << endl;
+			flux << "oui" << endl;
 		}
 		else {
-			cout << "non" << endl;
+			flux << "non" << endl;
 		}
 	}
 }
 
-Genome Analyse::getGenome()
-{
-	return genome;
-}
-
-map<string, bool> Analyse::getResults() {
-
-	return resultats;
-}
-
-string Analyse ::getType() {
-	return type;
-}
 
 string Analyse::getVersion()
 {
