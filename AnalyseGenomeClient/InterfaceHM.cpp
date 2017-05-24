@@ -2,6 +2,7 @@
 #include <string>
 #include <map>
 #include <list>
+#include <fstream>
 #include "InterfaceHM.h"
 
 using namespace std;
@@ -24,7 +25,7 @@ void InterfaceHM::demanderAnalyseGenerale(Analyse analyse) {
 		int returncode = clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse));
 		if (returncode!=-1) {
 			Analyse* a = parser.parseResultatGeneral(clientSocket.receiveMsg());
-			for (auto res : a->resultats)
+			for (auto res : a->getResults())
 			{
 			
 				result.insert(res);
@@ -58,7 +59,7 @@ void InterfaceHM::demanderAnalyseCiblee(Analyse analyse, string maladie) {
 		int returncode = clientSocket.sendMsg(parser.prepareMsgAnalyse(analyse, maladie));
 		if (returncode != -1) {
 			Analyse * a = parser.parseResultatCiblee(clientSocket.receiveMsg());
-			for (auto res : a->resultats)
+			for (auto res : a->getResults())
 			{
 				result.insert(res);
 				if (res.second)
@@ -134,9 +135,27 @@ void InterfaceHM::afficherResultatAnalyse(map<string, bool> res)
 
 void InterfaceHM::initialise()
 {
-	serveurs.push_back(Server("134.214.106.32", 8080));
-	serveurs.push_back(Server("127.0.0.1", 8085));
-	serveurs.push_back(Server("127.0.0.1", 8090));
+	ifstream fichier("res/listeServeurs.txt", ios::in);
+	if (fichier)
+	{
+
+			string line;
+			string adresse;
+			string port;
+			while (getline(fichier, line)) {
+				size_t pos = line.find(":");
+				adresse = line.substr(0, pos);
+				port = line.substr(pos+1);
+				serveurs.push_back(Server(adresse, stoi(port)));
+				TRACE("%s %s \r\n", adresse.c_str(), port.c_str());
+			}
+			fichier.close();
+		}
+	
+	else
+	{
+		AfxMessageBox((CString)("Impossible d'ouvrir le fichier de liste des serveurs!\r\n"));
+	}
 }
 
 void InterfaceHM::logger(char * msg)
