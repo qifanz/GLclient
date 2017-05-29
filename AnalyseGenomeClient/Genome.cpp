@@ -6,7 +6,7 @@
 #include <fstream>
 using namespace std;
 Genome::Genome() {
-	version = "1.1";
+	version = "1.0";
 };
 Genome::Genome(CString nomFichierGenome)
 {
@@ -56,5 +56,15 @@ void Genome::afficher()
 string Genome::getVersion()
 {
 	return version;
+}
+
+multiset<string> Genome::getMots()
+{
+	return mots;
+}
+
+void Genome::addMot(string mot)
+{
+	mots.insert(mot);
 }
 

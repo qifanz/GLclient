@@ -47,4 +47,5 @@ public:
 	CString nomMaladieSaisie;
 	afx_msg void OnBnClickedButton3();
 	CString etatGenome;
+	virtual void OnOK();
 };

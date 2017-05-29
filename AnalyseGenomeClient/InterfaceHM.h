@@ -24,7 +24,6 @@ public:
 	void demanderListerMaladies();
 	void afficherResultatListeMaladies();
 	void afficherResultatAnalyse(map<string, bool> res);
-
 	void initialise();
 protected:
 	void logger(char* msg);

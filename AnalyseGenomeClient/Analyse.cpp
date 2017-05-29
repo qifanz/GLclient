@@ -49,3 +49,20 @@ string Analyse::getType()
 {
 	return type;
 }
+
+map<string, bool> Analyse::getResultats()
+{
+	return resultats;
+}
+
+void Analyse::addResult(pair<string, bool> res)
+{
+	
+		resultats.insert(res);
+
+}
+
+Genome Analyse::getGenome()
+{
+	return genome;
+}

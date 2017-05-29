@@ -255,3 +255,12 @@ void CAnalyseGenomeClientDlg::OnBnClickedButton3()
 	}
 	// TODO: 在此添加控件通知处理程序代码
 }
+
+
+
+void CAnalyseGenomeClientDlg::OnOK()
+{
+	// TODO: 在此添加专用代码和/或调用基类
+	delete g;
+	CDialogEx::OnOK();
+}

@@ -14,8 +14,11 @@ public:
 	void afficher(ostream &flux) const;
 	string getVersion();
 	string getType();
+	map<string, bool> getResultats();
+	void addResult(pair<string, bool>res);
+	Genome getGenome();
 
-public :
+private :
 	map<string, bool> resultats;
 	Genome genome;
 	string type;
