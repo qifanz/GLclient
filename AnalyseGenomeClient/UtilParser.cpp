@@ -34,7 +34,7 @@ const char* UtilParser::prepareMsgAnalyse(Analyse a)
 	}
 	msgToSend += "\r\n\r\n";
 	TRACE (msgToSend.c_str());
-	char msg[BUFF_LEN];
+	//char msg[BUFF_LEN];
 	strcpy_s(msg,msgToSend.c_str());
 	return (msg);
 }
@@ -56,7 +56,7 @@ const char* UtilParser::prepareMsgAnalyse(Analyse a,string maladie)
 	}
 	msgToSend += "\r\n\r\n";
 	TRACE(msgToSend.c_str());
-	char msg[BUFF_LEN];
+	//char msg[BUFF_LEN];
 	strcpy_s(msg, msgToSend.c_str());
 	return (msg);
 }
@@ -68,7 +68,7 @@ const char* UtilParser::prepareMsgListeMaladies()
 	msgToSend += version;
 	msgToSend+="\r\nGET DISEASES\r\n\r\n";
 	TRACE(msgToSend.c_str());
-	char msg[BUFF_LEN];
+	//char msg[BUFF_LEN];
 	strcpy_s(msg, msgToSend.c_str());
 	return (msg);
 }

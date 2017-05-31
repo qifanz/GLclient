@@ -21,6 +21,7 @@ public:
 
 private: 
 	string version;
+	char msg[2048];
 	
 };
 
